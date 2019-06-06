@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 module.exports = {
     css: {
         loaderOptions: {
@@ -8,5 +9,15 @@ module.exports = {
             data: `@import "./src/lib/hotcss/px2rem.scss";`
           }
         }
-      }
+      },
+      configureWebpack: {
+        plugins: [
+            new webpack.ProvidePlugin({
+                $:"jquery",
+     
+                jQuery:"jquery",
+                "windows.jQuery":"jquery"
+            })
+        ]
+    }
   }
